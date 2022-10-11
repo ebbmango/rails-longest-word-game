@@ -1,0 +1,32 @@
+  <div class="container" style="margin-top: 100px;">
+    <h1 class="text-center">Longest Word Game</h1>
+
+    <div class="margin-top">
+      <div class="row">
+        <% @letters.each do |letter| %>
+          <div class="col-1 letter-box text-center">
+            <p>
+              <%= letter.upcase %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="text-center margin-top">
+      <% if !@contained %>
+        <h3>The Word Is Not Valid!</h3>
+        <p>It seems the word <strong><%= @word %></strong> can't be built from the letters in display.</p>
+      <% elsif !@exists %>
+        <h3>The Word Does Not Exist!</h3>
+        <p>It seems the word <strong><%= @word %></strong> is not a known English word.</p>
+      <% else %>
+        <h3>Congratulations!</h3>
+        <p>The word <strong><%= @word %></strong> is a valid English word built entirely from the letters in display!</p>
+      <% end %>
+    </div>
+
+    <div class="hyperlink text-center margin-top">
+      <%= link_to 'Play Again', new_path %>
+    </div>
+  </div>

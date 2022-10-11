@@ -1,0 +1,32 @@
+  <div class="container" style="margin-top: 100px;">
+    <h1 class="text-center">Longest Word Game</h1>
+
+    <div class="margin-top">
+      <div class="row">
+        <% @letters.each do |letter| %>
+          <div class="col-1 letter-box text-center">
+            <p>
+              <%= letter.upcase %>
+            </p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-5 text-center center margin-top">
+      <form action="/score" method="post" data-turbo="false">
+
+        <%# data I want to get through to the /score action %>
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <%= hidden_field_tag :letters, @letters %>
+
+        <label for="answer" class="form-label">Your guess</label>
+        <input type="text" id="answer" name="word" class="form-control" aria-describedby="answerHelpBlock">
+        <div id="answerHelpBlock" class="form-text">
+          Type in the form above the longest word you can think of that is composed entirely of the letters in display
+        </div>
+        <input type="submit" class="margin-top btn-custom" >
+
+      </form>
+    </div>
+  </div>
